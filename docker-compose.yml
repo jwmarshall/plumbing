@@ -1,0 +1,15 @@
+mongo:
+  image: mongo
+  ports:
+    - "27017:27017"
+  environment:
+    - AUTH=no
+
+node-red:
+  image: jwmarshall/node-red
+  ports:
+    - "1880:1880"
+  volumes:
+    - "./node-red:/srv/node-red"
+  links:
+    - "mongo:mongo"
